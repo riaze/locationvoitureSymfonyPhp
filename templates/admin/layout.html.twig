@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Car Rental Portal | Admin Dashboard!{% endblock %}</title>
+        {% block stylesheets %}
+            
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+            <meta name="description" content="">
+            <meta name="author" content="">
+            <meta name="theme-color" content="#3e454c">
+            
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/dataTables.bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-social.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap-select.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/fileinput.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/awesome-bootstrap-checkbox.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            <div class="brand clearfix">
+                <a href="{{ path('admin') }}" style="font-size: 20px;">Car Rental Portal <span style="color:white">|</span> Admin Panel <span style="color:white">|</span></a> 
+                <a href="{{ path('index') }}" style="font-size: 20px;">Accueil</a>
+                    <span></span> 
+                    <span class="menu-btn"><i class="fa fa-bars"></i></span>
+                    <ul class="ts-profile-nav">
+                        
+                        <li class="ts-account">
+                            <a href="#"><img src="img/flag.png" class="ts-avatar hidden-side" alt=""> Account <i class="fa fa-angle-down hidden-side"></i></a>
+                            <ul>
+                                <li><a href="{{ path('changepassord') }}">Change Password</a></li>
+                                <li><a href="{{ path('app_logout') }}">Logout</a></li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+            </div>
+        {% endblock %}
+
+        {% block leftbar %}
+        <nav class="ts-sidebar" style="width:17%;">
+			<ul class="ts-sidebar-menu">
+			
+				<li class="ts-label">Main</li>
+				<li><a href="{{ path('admin') }}"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fa fa-files-o"></i> Brands</a>
+                <ul>
+                    <li><a href="{{ path('createBrands') }}">Create Brand</a></li>
+                    <li><a href="{{ path('manageBrands') }}">Manage Brands</a></li>
+                </ul>
+                </li>
+
+                <li><a href="#"><i class="fa fa-sitemap"></i> Vehicles</a>
+                    <ul>
+                        <li><a href="{{ path('postVechicles') }}">Post a Vehicle</a></li>
+                        <li><a href="{{ path('manageVechicles')}}">Manage Vehicles</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('manageBookings')}}"><i class="fa fa-users"></i> Manage Booking</a></li> 
+                <li><a href="{{ path('manageMembres')}}"><i class="fa fa-users"></i> Reg Users</a></li>
+               
+
+			</ul>
+		</nav>
+        {% endblock %}
+
+
+        {% block body %}{% endblock %}
+        {% block javascript %}
+            
+            
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+            <script src="{{ asset('js/dataTables.bootstrap.min.js') }}"></script>
+            <script src="{{ asset('js/Chart.min.js') }}"></script>
+            <script src="{{ asset('js/fileinput.js') }}"></script>
+            <script src="{{ asset('js/chartData.js') }}"></script>
+            <script src="{{ asset('js/main.js') }}"></script>
+            <script>
+            function myFunction() {
+
+            
+                var input, filter, table, tr, td, i, txtValue;
+                input = document.getElementById("myInput");
+                filter = input.value.toUpperCase();
+                table = document.getElementById("myTable");
+                tr = table.getElementsByTagName("tr");
+            
+                    // Loop through all table rows, and hide those who don't match the search query
+                    for (i = 0; i < tr.length; i++) {
+                        td = tr[i].getElementsByTagName("td")[0];
+                        if (td) {
+                        txtValue = td.textContent || td.innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                        } 
+                    }
+	        }
+
+            </script>
+
+        {% endblock %}
+       
+    </body>
+    
+</html> 

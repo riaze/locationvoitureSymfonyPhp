@@ -1,0 +1,23 @@
+{% extends 'admin/layout.html.twig' %}
+{% form_theme createForm 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+
+
+    <div class="row">   
+        <div class="col-lg-6 offset-lg-3">
+            <div class="container reg_form_size">
+                <h3 class="text-center " style="margin-top:200px;margin-right:200px;">Create Brands</h3>
+
+               
+
+            {{ form_start(createForm) }}
+            {{ form_widget(createForm) }}
+
+
+              <input type="submit" value="create" class="btn btn-success  px-5 ">
+
+            {{ form_end(createForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

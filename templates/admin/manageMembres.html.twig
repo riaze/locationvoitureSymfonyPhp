@@ -1,0 +1,64 @@
+{% extends 'admin/layout.html.twig' %}
+{% block body %}
+
+       <div class="contanier">  
+    
+        <div class="input-group mb-3" style="width:200px; margin-top:200px; margin-left:55%">
+           <input type="text" class="form-control managebrands" id="myInput" onkeyup="myFunction()" placeholder="Search for rans.."
+            aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+            
+        </div>
+                
+        <table class="table" id="myTable" style="width:65%;text-align:center;margin-top:20px;margin-left:300px;"> 
+        <caption>List of users</caption>
+        
+       
+        <thead>
+               
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col" >Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Ville</th>
+            <th scope="col">Code Postal</th>
+            <th scope="col">Pays</th>
+            <th scope="col">Roles</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% set myVal = 0 %}
+        {% for membres in membres -%}
+        
+            <tr>
+           
+            <th scope="row"> {% set myVal = myVal + 1 %}{{myVal}}</th>
+           
+           <td>{{ membres.Nom }}</td>
+           <td>{{ membres.Prenom }}</td>
+            
+            <td>{{ membres.Email}}</td>
+            
+            
+            <td>{{ membres.Adresse }}</td>
+            <td>{{ membres.Ville }}</td>
+            <td>{{ membres.CodePostal }}</td>
+             <td>{{ membres.Pays }}</td>
+              <td>{{ membres.Roles[0] }}</td>
+            <td>
+            <a href="{{ path('deletemembres', {'id':membres.id}) }}"> Delete</a>
+            
+            </td>        
+           
+            </tr>
+            {%- endfor %}
+            
+        </tbody>
+        </table>
+    </div>    
+{% endblock %}

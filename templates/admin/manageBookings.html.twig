@@ -1,0 +1,71 @@
+{% extends 'admin/layout.html.twig' %}
+{% block body %}
+
+       <div class="contanier">  
+    
+        <div class="input-group mb-3" style="width:200px; margin-top:200px; margin-left:55%">
+           <input type="text" class="form-control managebrands" id="myInput" onkeyup="myFunction()" placeholder="Search for rans.."
+            aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+            
+        </div>
+                
+        <table class="table" id="myTable" style="width:50%;text-align:center;margin-top:20px;margin-left:300px;"> 
+        <caption>List of users</caption>
+        
+       
+        <thead>
+               
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col" >Nom</th>
+            <th scope="col">Vechicle</th>
+            <th scope="col">From Date</th>
+            <th scope="col">To Date</th>
+            <th scope="col">Message</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+         {% set myVal = 0 %}
+        {% for bookings in bookings -%}
+        
+            <tr>
+           
+            <th scope="row"> {% set myVal = myVal + 1 %}{{myVal}}</th>
+           
+           <td>{{ bookings.Membres.Nom }}</td>
+           <td>{{ bookings.Vechicles.vechicleTitle }}</td>
+            
+            <td>{{ bookings.FromDate|date('Y-m-d') }}</td>
+            
+            
+            <td>{{ bookings.ToDate|date('Y-m-d') }}</td>
+            <td>{{ bookings.Message }}</td>
+            <td>{{ bookings.Status }}</td>
+            <td><a href="{{ path('confirmebookings', {'id':bookings.id, 'status':bookings.Status} ) }}" >
+            
+            {% if bookings.Status == 'confirmed'  %}
+                cancel
+            {% elseif bookings.Status == 'cancelled' %}
+                    Confirm
+            {% else %} 
+                Confirm       
+            {% endif %}
+            
+            
+            </a><span> |
+            <a href="{{ path('deletebookings', {'id':bookings.id}) }}"> Delete</a></span>
+            
+            </td>        
+           
+            </tr>
+            {%- endfor %}
+            
+        </tbody>
+        </table>
+    </div>    
+{% endblock %}

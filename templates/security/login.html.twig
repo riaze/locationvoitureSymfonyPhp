@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+
+        {% endblock %}
+    </head>
+
+
+            <body>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                        <div class="card card-signin my-5">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">Sign In</h5>
+                                <form method="post" class="form-signin" >
+
+                                    {% if error %}
+                                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                    {% endif %}
+                                    <div class="form-label-group">
+                                        <input type="email" name="Email" value="{{ last_username }}" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                                        <label for="inputEmail">Email address</label>
+                                    </div>
+
+                                    <div class="form-label-group">
+                                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                        <label for="inputPassword">Password</label>
+                                    </div>
+
+                                    <div class="custom-control custom-checkbox mb-3">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                        <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                    </div>
+                                    <input type="hidden" name="_csrf_token"
+                                           value="{{ csrf_token('authenticate') }}"
+                                    >
+                                    <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+
+                                </form>
+                                <a href="{{ path('register')}}" class="btn btn-lg btn-primary btn-block text-uppercase mt-3 reg" >Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+            <script src="/js/bootstrap.bundle.min.js"></script>
+            </body>
+
+
+    </html>
+
+

@@ -1,0 +1,40 @@
+{% extends 'admin/layout.html.twig' %}
+    {% block body %}
+
+    <h1 style="text-align:left;margin-top:100px; margin-left:250px;">Dashboard</h1>
+    
+    
+    <div class="row p-4" style="margin-left:250px; font-size:20px;">
+     <div class="col-xl-2 offset-xl-4 col-lg-3 offset-lg-0 col-md-3 offset-md-0 text-center text-white p-4 m-4 ml-5  bg-primary border border-primary rounded ">
+     {{AllMembres}}
+     <p>REG USERS</p2>
+     <div class="bg-success">
+        <a class="text-white" href="{{path('manageMembres')}}">More Details</a>
+     </div>
+      </div>
+
+     <div class="col-xl-2  col-md-3 text-center text-white p-4 m-4 ml-5 bg-danger border border-primary rounded">
+     {{AllBrands}}
+     <p>Brands</p>
+     <div class="bg-success">
+        <a class="text-white" href="{{path('manageBrands')}}">More Details</a>
+     </div>
+     </div>
+     <div class="col-xl-2  col-md-3 text-center text-white p-4 m-4 ml-5 bg-secondary border border-primary rounded">
+     {{AllVechicles}}
+     <p>Vechicles</p>
+     <div class="bg-success">
+        <a class="text-white" href="{{path('manageVechicles')}}">More Details</a>
+     </div>
+     </div>
+     <div class="col-xl-2 col-md-3 text-center text-white p-4 m-4 ml-5 bg-dark border border-primary rounded">
+     {{AllBooking}}
+     <p>Booking</p>
+     <div class="bg-success">
+        <a class="text-white" href="{{path('manageBookings')}}">More Details</a>
+     </div>
+     </div>
+    
+    </div>
+
+    {% endblock %}

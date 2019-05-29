@@ -1,0 +1,47 @@
+{% extends 'admin/layout.html.twig' %}
+
+
+{% block body %}
+
+       <div class="contanier">  
+    
+        <div class="input-group mb-3" style="width:200px; margin-top:200px; margin-left:55%">
+           <input type="text" class="form-control managebrands" id="myInput" onkeyup="myFunction()" placeholder="Search for rans.."
+            aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+            
+        </div>
+                
+        <table class="table" id="myTable" style="width:50%;text-align:center;margin-top:20px;margin-left:300px;"> 
+        <caption>List of users</caption>
+        
+       
+        <thead>
+               
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col" >BrandName</th>
+            <th scope="col">Creation Date</th>
+            <th scope="col">Updation Date</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for AllBrands in AllBrands %}
+            <tr>
+            
+            <th scope="row">{{ AllBrands.id }}</th>
+            <td>{{ AllBrands.BrandName }}</td>
+            <td>{{ AllBrands.CreatedDate|date('Y-m-d') }}</td>
+            <td>{{ AllBrands.UpdatedDate|date('Y-m-d') }}</td>
+            <td><a href="{{ path('updateBrands', {'id':AllBrands.id}) }}" >edit</a><span> |<a href="{{ path('deleteBrands', {'id':AllBrands.id}) }}"> delete</a></span></td>        
+           
+            </tr>
+             {% endfor %}
+            
+        </tbody>
+        </table>
+    </div>    
+{% endblock %}

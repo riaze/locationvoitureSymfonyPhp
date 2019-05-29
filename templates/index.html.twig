@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+    {% block body %}
+
+
+
+        <section id="banner" class="banner-section">
+            <div class="container">
+
+                <div class="div_zindex">
+                    <div class="row">
+                        <div class="col-md-5 offset-md-7 ">
+                            <div class="banner_content">
+                                <h1>Find the right car for you.</h1>
+                                <p>We have more than a thousand cars for you to choose. </p>
+                                <a href="#" class="btn btn_all">Read More <span class="angle_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></a> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding gray-bg ">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2>Find the Best <span>CarForYou</span></h2>
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                </div>
+                <div class="row" id="carlisting">
+
+                    <!-- Nav tabs -->
+                    
+                        <ul class="col-12" style="text-align:center;">
+                            <li role="presentation" class="active btn text-center text-white btn_all">New Car</li>
+                        </ul>
+                    
+                    <!-- Recently Listed New Cars -->
+                    
+
+
+                    {% for AllVechicles in AllVechicles -%}
+                           
+                    <div class="col-lg-3 recent-car-list">        
+                        <div class="car-info-box"><a href="{{ path('carDetails', {'id':AllVechicles.id}) }}"><img src="img/{{AllVechicles.Vimage1}}" height="150" width="200" class="img-responsive" alt="image"></a>
+                            <ul>
+                                <li><i class="fa fa-car" aria-hidden="true"></i>{{AllVechicles.FuelType}}</li>
+                                <li><i class="fa fa-calendar" aria-hidden="true"></i>{{AllVechicles.PrricePerDay}}</li>
+                                <li><i class="fa fa-user" aria-hidden="true"></i> {{AllVechicles.SeatingCapacity}}</li>
+                            </ul>
+                        </div>
+                        <div class="car-title-m">
+                            <h6><a href="#">{{AllVechicles.Brands.BrandName}}, {{AllVechicles.vechicleTitle}}</a></h6>
+                            <span class="price">{{AllVechicles.PrricePerDay}}  $/Day</span>
+                        </div>
+                        <div class="inventory_info_m">
+                            <p>{{AllVechicles.VechilcleOverview}}</p>
+                        </div> 
+                    </div> 
+                    {%- endfor %}   
+                </div>
+            </div>                      
+        </section>
+
+
+    {% endblock %}
+
+

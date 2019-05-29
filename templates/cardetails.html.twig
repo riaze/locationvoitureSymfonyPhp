@@ -1,0 +1,112 @@
+
+{% extends 'base.html.twig' %}
+{% form_theme createForm 'bootstrap_4_layout.html.twig' %}
+
+
+    {% block body %}
+    <div style=" background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);">
+    <div class="row">   
+        <div class="col-10 offset-1 col-sm-10 offset-sm-1 col-md-6 offset-md-1 col-lg-6 offset-lg-1 col-xl-5 offset-xl-1 "> 
+
+        <table class="blueTable">
+        <thead>
+        <tr>
+        <th>Titles</th>
+        <th>Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr>
+        <td>Brand Name</td>
+        <td>{{AllVechicles.Brands.BrandName}}</td>
+        </tr>
+        <tr>
+        <td>Vechicle Title</td>
+        <td>{{AllVechicles.vechicleTitle}}</td>
+        </tr>
+        <tr>
+        <td>Vechicle Overview</td>
+        <td>{{AllVechicles.VechilcleOverview}}</td>
+        </tr>
+        <tr>
+        <td>Price Per Day</td>
+        <td>{{AllVechicles.PrricePerDay}}$</td>
+        </tr>
+        <tr>
+        <td>Full Type</td>
+        <td>{{AllVechicles.FuelType}}</td>
+        </tr>
+        <tr>
+        <td>Model Year</td>
+        <td>{{AllVechicles.ModelYear|date('Y-m-d')}}</td>
+        </tr>
+        <tr>
+        <td>Seating Capacity</td>
+        <td>{{AllVechicles.SeatingCapacity}}</td>
+        </tr>
+        <tr>
+        <td>Air Conditioner</td>
+        {% if AllVechicles.AirConditioner == true %}
+        <td>Oui</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        </tr>
+        <tr>
+        <td>Power door Lock</td>
+        {% if AllVechicles.PowerDoorLocks == true %}
+        <td>Oui</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        </tr>
+        <tr>
+        <td>Anti lock braking</td>
+        {% if AllVechicles.AntiLockBraking == true %}
+        <td>Oui</td>
+
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        </tr>
+        <tr>
+        <td>break-assist</td>
+        {% if AllVechicles.BreakAssist == true %}
+        <td>Oui</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        </tr>
+        <tr>
+        <td>Power Steering</td>
+        {% if AllVechicles.PowerSteering == true %}
+        <td>Oui</td>
+        {% else %}
+        <td>No</td>
+        {% endif %}
+        </tr>
+        </tbody>
+        </table>
+   </div> 
+   <div class="col-10 offset-1 col-sm-8 offset-sm-2 col-md-4 offset-md-0 col-lg-4 col-xl-4 mt-4 mb-0 booking"> 
+    <p class="text-center text-dark mt-3" style="font-size:30px; font-style:italic;">Book this Car</p>
+    {{ form_start(createForm) }}
+    {{ form_row(createForm.FromDate, {'attr': {'class': 'bookingMsg'}}) }}
+    {{ form_row(createForm.ToDate) }}
+    {{ form_row(createForm.Message) }}
+     
+   
+    <input type="submit" value="BooK Now" class="btn btn-success  px-3 register">
+     {{ form_end(createForm) }}
+    {% if UserNotLogin == true  %}
+        <p class="text-center text-danger mt-3 demo" style="font-size:20px; font-style:bold;">Pls login for booking</p>
+    {% endif %}
+    {% if PrintBookingMsg == true %}
+        <p class="text-center text-dark mt-3">congratulation your Booking Is Success!!</p>
+    {% endif %}
+   </div>
+</div>
+</div>
+ {% endblock  %}
+ 

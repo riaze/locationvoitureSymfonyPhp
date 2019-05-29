@@ -1,0 +1,23 @@
+{% extends 'admin/layout.html.twig' %}
+{% form_theme createForm 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="row">   
+        <div class="col-lg-6 offset-lg-3">
+            <div class="container reg_form_size">
+                <h3 class="text-center mt-2 text-center">Register</h3>
+
+                <h4 class="btn btn-sm btn-success"></h4>
+
+            {{ form_start(createForm) }}
+            {{ form_widget(createForm) }}
+
+
+              <input type="submit" value="update" class="btn btn-success  mb-5 px-5 register">
+
+            {{ form_end(createForm) }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

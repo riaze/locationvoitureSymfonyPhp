@@ -1,0 +1,62 @@
+{% extends 'admin/layout.html.twig' %}
+{% block body %}
+
+       <div class="contanier">  
+    
+        <div class="input-group mb-3" style="width:200px; margin-top:200px; margin-left:55%">
+           <input type="text" class="form-control managebrands" id="myInput" onkeyup="myFunction()" placeholder="Search for rans.."
+            aria-label="" aria-describedby="basic-addon1">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
+            
+        </div>
+                
+        <table class="table" id="myTable" style="width:50%;text-align:center;margin-top:20px;margin-left:300px;"> 
+        <caption>List of users</caption>
+        
+       
+        <thead>
+               
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col" >Vechcle Title</th>
+            <th scope="col">Brands</th>
+            <th scope="col">PricePerDay</th>
+            <th scope="col">FuelType</th>
+            <th scope="col">Model Year</th>
+            <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+        {% for AllVechicles in AllVechicles -%}
+        
+            <tr>
+            
+            <th scope="row">{{ AllVechicles.id }}</th>
+            <td>{{ AllVechicles.vechicleTitle }}</td>
+           
+            
+            <td>{{ AllVechicles.Brands.BrandName }}</td>
+            
+            
+            <td>{{ AllVechicles.PrricePerDay }}</td>
+            <td>{{ AllVechicles.FuelType }}</td>
+            <td>{{ AllVechicles.ModelYear|date('Y-m-d') }}</td>
+            <td><a href="{{ path('updateVechicles', {'id':AllVechicles.id}) }}" >edit</a><span> |<a href="{{ path('deleteVechicles', {'id':AllVechicles.id}) }}"> delete</a></span></td>        
+           
+            </tr>
+            {%- endfor %}
+            
+
+
+
+            
+              
+
+            
+        </tbody>
+        </table>
+    </div>    
+{% endblock %}
